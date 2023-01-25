@@ -8,7 +8,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Homepage from './src/screens/Homepage';
 import Verification from './src/screens/Verification';
 
-
+import Cars from './src/screens/Cars'
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +26,13 @@ export default function App() {
           }
         />
         <Stack.Screen name="login" component={Login}
+          options={
+            {
+              headerShown: false
+            }
+          }
+        />
+        <Stack.Screen name="cars" component={Cars}
           options={
             {
               headerShown: false

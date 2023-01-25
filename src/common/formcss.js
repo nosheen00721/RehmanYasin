@@ -64,5 +64,6 @@ module.exports = {
         textAlign: 'center',
         padding: 5,
         borderRadius: 5,
-    }
+    },
+    
 }

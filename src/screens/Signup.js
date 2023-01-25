@@ -5,6 +5,11 @@ import logo from '../../assets/mainlogo.png'
 import { button1 } from '../common/button'
 import { errormessage, formgroup, head1, head2, input, input1, label, link, link2 } from '../common/formcss'
 
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { MaskedTextInput} from "react-native-mask-text";
+const Stack = createNativeStackNavigator();
+
 const Signup = ({
     navigation
 }) => {
@@ -17,7 +22,7 @@ const Signup = ({
         dob: '',
         address: '',
     })
-
+   
     const [errormsg, setErrormsg] = useState(null);
 
     const Sendtobackend = () => {
@@ -62,7 +67,12 @@ const Signup = ({
         }
 
     }
+    const [maskedValue, setMaskedValue] = useState("");
+    const [unMaskedValue, setUnmaskedValue] = useState("");
+    
+      
     return (
+       
         <View style={styles.container}>
             <Image style={styles.patternbg} source={pattern} />
 
@@ -127,8 +137,20 @@ const Signup = ({
                             onChangeText={(text) => setFdata({ ...fdata, address: text })}
                         />
                     </View>
+                    <View style={styles.formgroup}>
+      <MaskedTextInput
+         
+        mask="99/99/9999"
+        onChangeText={(text, rawText) => {
+          setMaskedValue(text);
+          setUnmaskedValue(rawText);
+        }}
+        style={input}
+        keyboardType="numeric"
+      />
+      </View>
 
-                    <TouchableOpacity
+                    {/* <TouchableOpacity
                         onPress={() => {
                             Sendtobackend();
                         }}
@@ -136,10 +158,17 @@ const Signup = ({
                         <Text style={button1}
 
                         >Signup</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
+
+                    <Text style={button1}
+                    onPress={() => navigation.navigate('cars')}
+                >Enter Car Info</Text>
+      
+
                 </ScrollView>
             </View>
         </View>
+    
     )
 }
 
