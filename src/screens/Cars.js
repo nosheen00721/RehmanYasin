@@ -28,13 +28,26 @@ import CheckBox from '@react-native-community/checkbox';
 const Signup = ({navigation}) => {
   //checkBox
   const [check, setCheck] = React.useState();
-  const [fdata, setFdata] = useState({
-    name: '',
-    email: '',
-    password: '',
-    cpassword: '',
-    dob: '',
-    address: '',
+  const [cdata, setCdata] = useState({
+     brand:"",
+        enterVeh:"",
+        vehV:"",
+        color:"",
+        productT:"",
+        power:"",
+        saleP:"",
+        federalT:"",
+        federalTA:"",
+        whT:"",
+        whTA:"",
+        sedT:"",
+        sedTA:"",
+        comm:"",
+        commA:"",
+        ffiA:"",
+        pdiA:"",
+        description:""
+   
   });
   const [selected, setSelected] = React.useState('');
   //DropDown For Vehicle
@@ -112,32 +125,44 @@ const Signup = ({navigation}) => {
   const [errormsg, setErrormsg] = useState(null);
 
   const Sendtobackend = () => {
-    // console.log(fdata);
+    console.log(cdata);
     if (
-      fdata.name == '' ||
-      fdata.email == '' ||
-      fdata.password == '' ||
-      fdata.cpassword == '' ||
-      fdata.dob == '' ||
-      fdata.address == ''
+       cdata.brand==''||
+        cdata.enterVeh==''||
+        cdata.vehV==''||
+        cdata.color==''||
+        cdata.productT==''||
+        cdata.power==''||
+        cdata.saleP==''||
+        cdata.federalT==''||
+        cdata.federalTA==''||
+        cdata.whT==''||
+        cdata.whTA==''||
+        cdata.sedT==''||
+        cdata.sedTA==''||
+        cdata.comm==''||
+        cdata.commA==''||
+        cdata.ffiA==''||
+       cdata. pdiA==''||
+        cdata.description==''
+            
+
+
     ) {
       setErrormsg('All fields are required');
       return;
     } else {
-      if (fdata.password != fdata.cpassword) {
-        setErrormsg('Password and Confirm Password must be same');
-        return;
-      } else {
-        fetch('http://10.0.2.2.:3000/verify', {
+       {
+        fetch(' https://26cf-39-42-183-102.in.ngrok.io/car', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(fdata),
+          body: JSON.stringify(cdata),
         })
           .then(res => res.json())
           .then(data => {
-            // console.log(data);
+            console.log(data);
             if (data.error === 'Invalid Credentials') {
               // alert('Invalid Credentials')
               setErrormsg('Invalid Credentials');
@@ -146,9 +171,13 @@ const Signup = ({navigation}) => {
             ) {
               // console.log(data.udata);
               alert(data.message);
-              navigation.navigate('verification', {userdata: data.udata});
+              navigation.navigate('verification', {cardata: data.cdata});
             }
-          });
+          }).catch((error) => {
+            //                  Handle any errors that occur
+                                 console.error(error);
+                            });
+          
       }
     }
   };
@@ -174,7 +203,7 @@ const Signup = ({navigation}) => {
               style={input}
               placeholder="Brand Name"
               onPressIn={() => setErrormsg(null)}
-              onChangeText={text => setFdata({...fdata, name: text})}
+              onChangeText={text => setCdata({...cdata, brand: text})}
             />
           </View>
           <View style={formgroup}>
@@ -185,7 +214,7 @@ const Signup = ({navigation}) => {
               setSelected={setSelected}
               save="value"
               onPressIn={() => setErrormsg(null)}
-              onChangeText={text => setFdata({...fdata, email: text})}
+              onChangeText={text => setCdata({...cdata, enterVeh: text})}
             />
           </View>
           <View style={formgroup}>
@@ -196,7 +225,7 @@ const Signup = ({navigation}) => {
               setSelected={setSelected}
               save="value"
               onPressIn={() => setErrormsg(null)}
-              onChangeText={text => setFdata({...fdata, dob: text})}
+              onChangeText={text => setCdata({...cdata, vehV: text})}
             />
           </View>
           <View style={formgroup}>
@@ -205,8 +234,8 @@ const Signup = ({navigation}) => {
               style={input}
               placeholder="Enter Car Color"
               onPressIn={() => setErrormsg(null)}
-              secureTextEntry={true}
-              onChangeText={text => setFdata({...fdata, password: text})}
+          
+              onChangeText={text => setCdata({...cdata, color: text})}
             />
           </View>
 
@@ -216,8 +245,7 @@ const Signup = ({navigation}) => {
               style={input}
               placeholder="Product Title"
               onPressIn={() => setErrormsg(null)}
-              secureTextEntry={true}
-              onChangeText={text => setFdata({...fdata, cpassword: text})}
+              onChangeText={text => setCdata({...cdata, productT: text})}
             />
           </View>
 
@@ -228,7 +256,7 @@ const Signup = ({navigation}) => {
               keyboardType="numeric"
               placeholder="Engine Power"
               onPressIn={() => setErrormsg(null)}
-              onChangeText={text => setFdata({...fdata, name: text})}
+              onChangeText={text => setCdata({...cdata, power: text})}
             />
           </View>
           <View style={formgroup}>
@@ -238,7 +266,7 @@ const Signup = ({navigation}) => {
               keyboardType="numeric"
               placeholder="Sale Price"
               onPressIn={() => setErrormsg(null)}
-              onChangeText={text => setFdata({...fdata, name: text})}
+              onChangeText={text => setCdata({...cdata, saleP: text})}
             />
           </View>
           <View style={formgroup}>
@@ -248,7 +276,7 @@ const Signup = ({navigation}) => {
               keyboardType="numeric"
               placeholder="Federal Tax"
               onPressIn={() => setErrormsg(null)}
-              onChangeText={text => setFdata({...fdata, name: text})}
+              onChangeText={text => setCdata({...cdata, federalT: text})}
             />
           </View>
           <View style={formgroup}>
@@ -258,7 +286,7 @@ const Signup = ({navigation}) => {
               keyboardType="numeric"
               placeholder="Federal Tax Amount"
               onPressIn={() => setErrormsg(null)}
-              onChangeText={text => setFdata({...fdata, name: text})}
+              onChangeText={text => setCdata({...cdata, federalTA: text})}
             />
           </View>
           <View style={formgroup}>
@@ -268,7 +296,7 @@ const Signup = ({navigation}) => {
               keyboardType="numeric"
               placeholder="W.H Tax"
               onPressIn={() => setErrormsg(null)}
-              onChangeText={text => setFdata({...fdata, name: text})}
+              onChangeText={text => setCdata({...cdata, whT: text})}
             />
           </View>
           <View style={formgroup}>
@@ -278,7 +306,7 @@ const Signup = ({navigation}) => {
               keyboardType="numeric"
               placeholder="W.H Tax Amount"
               onPressIn={() => setErrormsg(null)}
-              onChangeText={text => setFdata({...fdata, name: text})}
+              onChangeText={text => setCdata({...cdata, whTA: text})}
             />
           </View>
           <View style={formgroup}>
@@ -288,7 +316,7 @@ const Signup = ({navigation}) => {
               keyboardType="numeric"
               placeholder="Sed Tax"
               onPressIn={() => setErrormsg(null)}
-              onChangeText={text => setFdata({...fdata, name: text})}
+              onChangeText={text => setCdata({...cdata, sedT: text})}
             />
           </View>
           <View style={formgroup}>
@@ -298,7 +326,7 @@ const Signup = ({navigation}) => {
               keyboardType="numeric"
               placeholder="Sed Tax Amount"
               onPressIn={() => setErrormsg(null)}
-              onChangeText={text => setFdata({...fdata, name: text})}
+              onChangeText={text => setCdata({...cdata, sedTA: text})}
             />
           </View>
           <View style={formgroup}>
@@ -308,7 +336,7 @@ const Signup = ({navigation}) => {
               keyboardType="numeric"
               placeholder="Comission %"
               onPressIn={() => setErrormsg(null)}
-              onChangeText={text => setFdata({...fdata, name: text})}
+              onChangeText={text => setCdata({...cdata, comm: text})}
             />
           </View>
           <View style={formgroup}>
@@ -318,7 +346,7 @@ const Signup = ({navigation}) => {
               keyboardType="numeric"
               placeholder="Comission Amount"
               onPressIn={() => setErrormsg(null)}
-              onChangeText={text => setFdata({...fdata, name: text})}
+              onChangeText={text => setCdata({...cdata, commA: text})}
             />
           </View>
           <View style={formgroup}>
@@ -328,7 +356,7 @@ const Signup = ({navigation}) => {
               keyboardType="numeric"
               placeholder="FFI Amount"
               onPressIn={() => setErrormsg(null)}
-              onChangeText={text => setFdata({...fdata, name: text})}
+              onChangeText={text => setCdata({...cdata, ffiA: text})}
             />
           </View>
           <View style={formgroup}>
@@ -338,7 +366,7 @@ const Signup = ({navigation}) => {
               keyboardType="numeric"
               placeholder="PDI Amount"
               onPressIn={() => setErrormsg(null)}
-              onChangeText={text => setFdata({...fdata, name: text})}
+              onChangeText={text => setCdata({...cdata, pdiA: text})}
             />
           </View>
           <View style={formgroup}>
@@ -347,7 +375,7 @@ const Signup = ({navigation}) => {
               style={input1}
               placeholder="Enter your Description"
               onPressIn={() => setErrormsg(null)}
-              onChangeText={text => setFdata({...fdata, address: text})}
+              onChangeText={text => setCdata({...cdata, description: text})}
             />
           </View>
           

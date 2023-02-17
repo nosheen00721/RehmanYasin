@@ -1,3 +1,6 @@
+
+
+
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { head1 } from '../common/formcss'
@@ -19,14 +22,14 @@ const Homepage = ({ navigation }) => {
     )
 }
 
-export default Homepage
-
+export default Homepage;
 const styles = StyleSheet.create({
-    container: {
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-    }
+  container: {
+      width: '100%',
+      height: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+  }
 })
+

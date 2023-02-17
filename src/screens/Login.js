@@ -15,12 +15,13 @@ const Login = ({ navigation }) => {
 
     const Sendtobackend = () => {
         // console.log(fdata);
+        console.log('pressed')
         if (fdata.email == '' || fdata.password == '') {
             setErrormsg('All fields are required');
             return;
         }
         else {
-            fetch('http://10.0.2.2:3000/signin', {
+            fetch(`https://bdc8-39-42-177-36.eu.ngrok.io/signin`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -38,7 +39,9 @@ const Login = ({ navigation }) => {
                             navigation.navigate('homepage');
                         }
                     }
-                )
+                ).catch((e)=>{
+                    console.error(e);
+                })
         }
     }
     return (

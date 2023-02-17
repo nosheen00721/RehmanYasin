@@ -47,7 +47,7 @@ export default function App() {
           }
 
         />
-
+         
         <Stack.Screen name="homepage" component={Homepage}
           options={
             {

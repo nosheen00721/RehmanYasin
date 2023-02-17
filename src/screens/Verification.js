@@ -18,7 +18,8 @@ const Verification = ({ navigation, route }) => {
 
     const Sendtobackend = () => {
         // console.log(userCode);
-        // console.log(actualCode);
+        console.log('pressed');
+        
 
         if (userCode == 'XXXX' || userCode == '') {
             setErrormsg('Please enter the code');
@@ -26,16 +27,34 @@ const Verification = ({ navigation, route }) => {
         }
 
         else if (userCode == actualCode) {
-            // console.log('correct code');
             const fdata = {
                 email: userdata[0]?.email,
                 password: userdata[0]?.password,
                 name: userdata[0]?.name,
                 address: userdata[0]?.address,
                 dob: userdata[0]?.dob,
-            }
+                brand:userdata[0]?.brand,
+                color:userdata[0]?.color,
+            productT:userdata[0]?.productT,
+            power:userdata[0]?.power,
+            saleP:userdata[0]?.saleP,
+            federalT:userdata[0]?.federalT,
+            federalTA:userdata[0]?.federalTA,
+            whT:userdata[0]?.whT,
+            whTA:userdata[0]?.whTA,
+            sedT:userdata[0]?.sedT,
+            sedTA:userdata[0]?.sedTA,
+            comm:userdata[0]?.comm,
+            commA:userdata[0]?.commA,
+            ffiA:userdata[0]?.ffiA,
+            pdiA:userdata[0]?.pdiA,
+            description:userdata[0]?.description,
+                address:userdata[0]?.address,
+                // cng:userdata[0]?.cng
 
-            fetch('http://10.0.2.2.:3000/signup', {
+            }
+            console.log(fdata)
+            fetch(`https://bdc8-39-42-177-36.eu.ngrok.io/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -53,7 +72,12 @@ const Verification = ({ navigation, route }) => {
                         alert("Something went wrong !! Try Signing Up Again");
 
                     }
+
                 })
+                .catch((error) => {
+                    //                  Handle any errors that occur
+                                         console.error(error);
+                                    });
         }
         else if (userCode != actualCode) {
             setErrormsg('Incorrect code');
@@ -67,10 +91,10 @@ const Verification = ({ navigation, route }) => {
             <Image style={styles.patternbg} source={pattern} />
 
             <View style={styles.container1} >
-                <View style={styles.s1}>
+            <View style={styles.s1}>
                     <Image style={styles.logo} source={logo} />
-                    <Text style={styles.h1} onPress={() => navigation.navigate('welcome')}>Used2, Inc.</Text>
-                    <Text style={styles.small1}>Buying and selling online</Text>
+                    <Text style={styles.h1} onPress={() => navigation.navigate('welcome')}>Welcome To</Text>
+                     <Text style={styles.small1}>Suzuki Canal</Text> 
                 </View>
                 <View style={styles.s2}>
 
