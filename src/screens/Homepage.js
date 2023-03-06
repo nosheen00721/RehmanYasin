@@ -1,6 +1,7 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Tc from './Tc';
 import AboutUs from './AboutUs';
+import About from './About';
 import Faq from './Faq';
 import { NavigationContainer } from '@react-navigation/native';
 import login from './Login';
@@ -32,16 +33,19 @@ const Drawer = createDrawerNavigator();
 
 function Homepage({ navigation }) {
   return (
-    <NavigationContainer independent={true}>
-    
+    <NavigationContainer independent={true}     >
+     
+
     <Drawer.Navigator>
-      <Drawer.Screen name="About Us" component={AboutUs} />
+      <Drawer.Screen  name="About Us" component={AboutUs}  />
+      <Drawer.Screen  name="About" component={About}  />
       <Drawer.Screen name="Term & Conditions" component={Tc} />
       <Drawer.Screen name="FAQ" component={Faq} />
       
       
       
     </Drawer.Navigator>
+    
     </NavigationContainer>
 
   );
@@ -49,35 +53,12 @@ function Homepage({ navigation }) {
 
 export default Homepage;
 
-// import { StyleSheet, Text, View } from 'react-native'
-// import React from 'react'
-// import { head1 } from '../common/formcss'
-// import { button1 } from '../common/button'
 
-// const Homepage = ({ navigation }) => {
-//     return (
-//         <View style={styles.container}>
-//             <Text
-//                 style={head1}
-//             >this is Homepage</Text>
 
-//             <Text style={button1}
-//                 onPress={
-//                     () => { navigation.navigate('login') }
-//                 }
-//             >Logout</Text>
-//         </View>
-//     )
-// }
+const styles = StyleSheet.create({
+  container: {
 
-// export default Homepage;
-// const styles = StyleSheet.create({
-//   container: {
-//       width: '100%',
-//       height: '100%',
-//       display: 'flex',
-//       justifyContent: 'center',
-//       alignItems: 'center',
-//   }
-// })
+     backgroundColor: '#F61111'
+  }
+})
 
