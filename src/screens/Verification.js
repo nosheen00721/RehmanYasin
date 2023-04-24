@@ -54,7 +54,7 @@ const Verification = ({ navigation, route }) => {
 
             }
             console.log(fdata)
-            fetch(`https://8931-39-53-206-237.in.ngrok.io/signup`, {
+            fetch(`https://e354-39-42-172-88.ngrok-free.app/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

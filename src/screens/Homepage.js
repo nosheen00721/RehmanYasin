@@ -3,6 +3,7 @@ import Tc from './Tc';
 import AboutUs from './AboutUs';
 import About from './About';
 import Faq from './Faq';
+import book from './book';
 import { NavigationContainer } from '@react-navigation/native';
 import login from './Login';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -41,7 +42,7 @@ function Homepage({ navigation }) {
       <Drawer.Screen  name="About" component={About}  />
       <Drawer.Screen name="Term & Conditions" component={Tc} />
       <Drawer.Screen name="FAQ" component={Faq} />
-      
+      <Drawer.Screen name="Online Boooking" component={book} />
       
       
     </Drawer.Navigator>

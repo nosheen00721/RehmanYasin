@@ -100,7 +100,7 @@ const Sendtobackend = () => {
         return;
       } else {
         //    http://9b01-39-42-161-51.in.ngrok.io/verify
-        fetch(`https://8931-39-53-206-237.in.ngrok.io/verify`, {
+        fetch(`https://e354-39-42-172-88.ngrok-free.app/verify`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

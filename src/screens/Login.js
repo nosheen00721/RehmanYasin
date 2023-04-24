@@ -21,7 +21,7 @@ const Login = ({ navigation }) => {
             return;
         }
         else {
-            fetch(`https://8931-39-53-206-237.in.ngrok.io/signin`, {
+            fetch(`https://e354-39-42-172-88.ngrok-free.app/signin`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
