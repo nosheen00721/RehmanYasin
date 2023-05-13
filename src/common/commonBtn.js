@@ -1,7 +1,5 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
-import LinearGradient from 'react-native-linear-gradient';
-
 const CommonBtn = ({w, h, txt, onClick, status}) => {
   return (
     <TouchableOpacity
@@ -10,33 +8,42 @@ const CommonBtn = ({w, h, txt, onClick, status}) => {
       }}
       style={{alignSelf: 'center', marginTop: 10, marginBottom: 10}}>
       {status ? (
-        <LinearGradient
-          colors={['#009FFD', '#2A2A72']}
-          style={{
-            width: w,
-            height: h,
-            justifyContent: 'center',
-            alignItems: 'center',
-            borderRadius: 10,
-          }}>
+        <View
+          style={[
+            styles.button,
+            {
+              backgroundColor: status ? '#009FFD' : '#8e8e8e',
+              opacity: status ? 1 : 0.5,
+              width: w,
+              height: h,
+              borderRadius: 10,
+            },
+          ]}>
           <Text style={{color: '#fff', fontSize: 16}}>{txt}</Text>
-        </LinearGradient>
+        </View>
       ) : (
-        <LinearGradient
-          colors={['#8e8e8e', '#8e8e8e']}
-          style={{
-            width: w,
-            height: h,
-            justifyContent: 'center',
-            alignItems: 'center',
-            borderRadius: 10,
-            opacity: 0.5,
-          }}>
+        <View
+          style={[
+            styles.button,
+            {
+              backgroundColor: status ? '#8e8e8e' : '#8e8e8e',
+              opacity: status ? 1 : 0.5,
+              width: w,
+              height: h,
+              borderRadius: 10,
+            },
+          ]}>
           <Text style={{color: '#fff', fontSize: 16}}>{txt}</Text>
-        </LinearGradient>
+        </View>
       )}
     </TouchableOpacity>
   );
 };
 
 export default CommonBtn;
+const styles = StyleSheet.create({
+  button: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});

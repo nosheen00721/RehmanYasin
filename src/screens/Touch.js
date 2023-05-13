@@ -1,8 +1,13 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { View, TouchableOpacity, Text , StyleSheet ,Image} from 'react-native';
 import ms from '../../assets/ms.png';
+import Book from './book';
 const Touch = () => {
+  const [showNewComponent, setShowNewComponent] = useState(false);
+  function handlePress() {
+    setShowNewComponent(true);
+  }
   return (
     <View>
     <View style={{ flexDirection: 'row' , alignContent:'space-around' , marginTop:20 }}>
@@ -25,10 +30,14 @@ const Touch = () => {
         <Image style={styles.p1} source={ms} />
         <Text>Car Asseoriess</Text>
         </TouchableOpacity>
-        <TouchableOpacity   style={{ marginRight: 20   }}>
+        <View>
+
+        <TouchableOpacity   style={{ marginRight: 20   }}  onPress={handlePress}>
         <Image style={styles.p1} source={ms} />
         <Text>Online Booking</Text>
         </TouchableOpacity>
+        {showNewComponent && <Book/>}
+        </View>
     </View>
     </View>
      

@@ -3,7 +3,6 @@ import React from 'react';
 import logo from '../../assets/hlog.png';
 import ms from '../../assets/ms.png';
 import Touch from './Touch';
-
 export default function AboutUs() {
   return (
     <View style={styles.container}>
